@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./projects.css">
+</head>
+  <body class="light-mode">
+    <div class="theme-toggle">
+      <button id="toggle-theme">Switch to Dark Mode</button>
+    </div>
+    <div class="form-container">
+      <form class="signup-form" id="form">
+        <h2>Signup Form</h2>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter Username" />
+          <span id="username_err"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter Email" />
+          <span id="email_err"></span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter Password" />
+          <span id="psw_err"></span>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Confirm Password"
+          />
+          <span id="confirm-psw_err"></span>
+        </div>
+
+        <button type="submit" class="btn-signup">Signup</button>
+      </form>
+
+      <div id="welcome-message">
+        
+      </div>
+    </div>
+
+    <script>
+      const toggleThemeBtn = document.getElementById("toggle-theme");
+      const body = document.body;
+
+      toggleThemeBtn.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        if (body.classList.contains("dark-mode")) {
+          toggleThemeBtn.textContent = "Switch to Light Mode";
+        } else {
+          toggleThemeBtn.textContent = "Switch to Dark Mode";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -2,9 +2,11 @@ require('dotenv').config()
 const { Template } = require('ejs')
 const express = require('express')
 const expressLayout = require("express-ejs-layouts")
+const connectDB = require('./config/db')
 const app = express()
 
-PORT = 4000 || process.env.PORT
+PORT = 4000 || process.env.PORT;
+connectDB()
 
 app.use(express.static('./public'))
 

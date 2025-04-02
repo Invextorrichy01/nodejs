@@ -3,39 +3,31 @@ const router = express.Router();
 const Blog = require('../models/blog')
 
 
-router.get("", (req,res) => {
-    const locals = {
-        title:'Nodejs Blog App',
-        description:"A Nodejd Blog App built with Nodejs, Express and MongoDB",
-    };
-    res.render('index', {locals});
+router.get("", async (req,res) => {
+    try{
+        const locals = {
+            title:'Nodejs Blog App',
+            description:"A Nodejd Blog App built with Nodejs, Express and MongoDB",
+        };
+        const data = await Blog.find();
+    res.render('index', {locals, data });
+    }catch (error) {
+        console.log(error);
+    }
 });
-
-function insertBlogdata () {
-    Blog.insertMany([
-        {
-            title: "Blog1",
-            body: "Body1",
-        },
-        {
-            title: "Blog2",
-            body: "Body2",
-        },
-        {
-            title: "Blog3",
-            body: "Body3",
-        },
-        {
-            title: "Blog4",
-            body: "Body4",
-        },
-        {
-            title: "Blog5",
-            body: "Body5",
-        }
-    ])
-}
-
-insertBlogdata()
+// A route to get a particular blog
+router.get("/blog/:id", async (req, res) => {
+    try{
+        const id = req.params.id;
+        const data = await Blog.findById({_id: id});
+        const locals = {
+            title: data.title,
+            description:"A Nodejd Blog App built with Nodejs, Express and MongoDB",
+        };
+    res.render("blog", {locals, data });
+    }catch (error) {
+        console.log(error);
+    }
+});
 
 module.exports = router

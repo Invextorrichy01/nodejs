@@ -9,6 +9,8 @@ PORT = 4000 || process.env.PORT;
 connectDB()
 
 app.use(express.static('./public'))
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // app.get('/', (req, res) =>{
 //     res.send('Hello Clurix Tech')

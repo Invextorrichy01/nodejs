@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Blog = require('../models/blog')
+const Blog = require('../models/blog');
+const { route, search } = require('./admin');
 
 
+// A route to get a all the blog
 router.get("", async (req,res) => {
     try{
         const locals = {
@@ -30,6 +32,7 @@ router.get("/blog/:id", async (req, res) => {
     }
 });
 
+// the route for the search
 router.post('/search', async (req, res) => {
     try {
         const searchTerm = req.body.searchTerm;

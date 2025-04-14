@@ -12,9 +12,9 @@
             <%= blog.title %> &nearr;
         </a>
         <div class="admin-post-controls">
-          <a href="" class="btn">Edit</a>
+          <a href="/edit-blog/<%= blog._id %>" class="btn">Edit</a>
   
-          <form action="" method="POST">
+          <form action="/delete-blog/<%= blog._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete" class="btn-delete btn">
           </form>
   

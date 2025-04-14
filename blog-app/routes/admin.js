@@ -100,5 +100,45 @@ router.post("/add-blog", async (req, res) => {
         console.log(error);
     }
 });
+router.get("/edit-blog/:id", async (req, res) => {
+    try{
+        const data = await Blog.findOne({_id: req.params.id });
+        const locals = {
+            title: data.title,
+            description:"A Nodejd Blog App built with Nodejs, Express and MongoDB",
+        };
+    res.render("admin/edit-blog", {locals, data, layout: adminLayout });
+    }catch (error) {
+        console.log(error);
+    }
+});
+router.put("/edit-blog/:id", async (req, res) => {
+    try {
+        await Blog.findByIdAndUpdate(req.params.id, {
+            title: req.body.title,
+            body: req.body.body,
+            updatedAt: Date.now(),
+        });
+        res.redirect("/dashboard");
+    } catch (error) {
+        console.log(error);
+    }
+});
+router.delete("/delete-blog/:id", async (req, res) => {
+    try {
+        await Blog.deleteOne({_id: req.params.id });
+        res.redirect("/dashboard");
+    } catch (error) {
+        console.log(error);
+    }
+});
+router.get('/logout', async (req, res) => {
+    try {
+        res.clearCookie("token"),
+        res.redirect("/admin")
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 module.exports = router;

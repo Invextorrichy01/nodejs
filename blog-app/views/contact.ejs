@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width= , initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="./BEGIN.CSS">
 
-</head>
-<body>
     <div class="box">
-        <form action="">
+        <form action="/contact" method="POST">
 
             <h2>Contact</h2>
             <div class="input-Bx">
-                <input type="text" required>
+                <input type="text" name="name" required>
                 <span>Full name</span>
                 <i></i>
             </div>
             <div class="input-Bx">
-                <input type="Email" required>
+                <input type="Email" name="email" required>
                 <span>Email</span>
                 <i></i>
             </div>
             <div class="input-Bx">
-                <input type="Phone" required>
+                <input type="Phone" name="phone"  required>
                 <span>Phone</span>
                 <i></i>
             </div>
             <div class="input-Bx">
-                <input type="Subject" required>
+                <input type="Subject" name="subject" required>
                 <span>Subject</span>
                 <i></i>
             </div>
@@ -36,5 +27,3 @@
             <input type="submit" value="Send Message">
         </form>
     </div>
-</body>
-</html>
